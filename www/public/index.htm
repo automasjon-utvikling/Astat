@@ -1,0 +1,252 @@
+﻿<html>
+<head>
+    <title>Vinsight</title>
+    <!--
+        <div>Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/vitaly-gorbachev" title="Vitaly Gorbachev">Vitaly Gorbachev</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/prosymbols" title="Prosymbols">Prosymbols</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/monkik" title="monkik">monkik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/surang" title="surang">surang</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        -->
+</head>
+<body>
+    <nav>
+        <div class="nav-list">
+            <img class="nav-logo" src="static/linsight.png" />
+            <a class="nav-dato">13.09.2020</a> <!--IMPLEMENTER DETTE "SERVER DATE"-->
+            <a>&nbsp;</a>
+            <a class="nav-time">23:31</a> <!--IMPLEMENTER DETTE "SERVER CLOCK"-->
+            <a class="nav-login">{{ g.user.name }}</a> <!--IMPLEMENTER DETTE "BRUKERNAVN"-->
+        </div>
+    </nav>
+    <section>
+        <div class="category-list">
+            
+            <a href="port" class="category-item">
+                <img src="static/gatelys.svg" />
+                <span>Portstyring</span>
+            </a>
+            <a class="category-item">
+                <img src="static/vann.svg" />
+                <span>Nanokontroller</span>
+            </a>
+            <a  class="category-item">
+                <img style="filter:invert(100%);" src="https://www.flaticon.com/svg/static/icons/svg/702/702814.svg" />
+                <span>Idéskaping</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);" src="https://www.flaticon.com/svg/static/icons/svg/917/917152.svg" />
+                <span>Elektronikk</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);" src="https://www.flaticon.com/svg/static/icons/svg/2922/2922260.svg" />
+                <span>Kommunikasjon</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);" src="https://www.flaticon.com/svg/static/icons/svg/559/559243.svg" />
+                <span>Konfigurasjon</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);" src="https://www.flaticon.com/svg/static/icons/svg/868/868827.svg" />
+                <span>Strøm</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);" src="https://www.flaticon.com/svg/static/icons/svg/702/702814.svg" />
+                <span>Mekatronikk</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);" src="https://www.flaticon.com/svg/static/icons/svg/860/860315.svg" />
+                <span>Akustikk</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);" src="https://www.flaticon.com/svg/static/icons/svg/121/121156.svg" />
+                <span>Internet</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);"src="https://www.flaticon.com/svg/static/icons/svg/702/702814.svg" />
+                <span>Produktkatalog</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);"src="https://www.flaticon.com/svg/static/icons/svg/2329/2329087.svg" />
+                <span>Analyse</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);" src="https://www.flaticon.com/svg/static/icons/svg/702/702814.svg" />
+                <span>XR</span>
+            </a>
+            <a class="category-item">
+                <img style="filter:invert(100%);" src="https://www.flaticon.com/svg/static/icons/svg/2728/2728212.svg" />
+                <span>AI</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="category-item">
+                <img src="https://www.flaticon.com/svg/static/icons/svg/2910/2910875.svg" />
+                <span>Kundestøtte</span>
+            </a>
+        </div>
+    </section>
+    <footer>
+        <img class="footer-logo" src="static/footer.png"/>
+    </footer>
+</body>
+</html>
+
+
+<style>
+    html {
+        min-height: 100%;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+        font-family: helvetica;
+        background: #3b3b3b;
+    }
+
+    .nav-list {
+        background: #3b3b3b;
+        border-bottom: solid 5px #5b5b5b;
+        padding: 10px;
+        padding-bottom: 2px;
+        color: #cbcbcb;
+        min-height: 3.2rem;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        flex: 0 1 auto;
+        font-size: 32px;
+    }
+
+        .nav-list .nav-logo {
+            max-height: 3rem;
+            position: absolute;
+            left: 1rem;
+            top: 0.5rem;
+        }
+
+    @media screen and (min-width: 900px) {
+        .nav-list .nav-dato {
+        }
+
+        .nav-list .nav-time {
+            font-weight: 600;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .nav-list .nav-dato {
+            display: none;
+        }
+
+        .nav-list .nav-time {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: 600px) {
+        .nav-list .nav-login {
+            position: absolute;
+            max-width: 50%;
+            right: 3.5rem;
+            font-size: 24px;
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        .nav-list .nav-login {
+            display: none;
+        }
+    }
+
+    section {
+        flex: 1 0 auto;
+        padding: 1rem;
+        background: #3b3b3b;
+    }
+
+    .category-list {
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+    }
+
+    @media (orientation: landscape) {
+        .category-item {
+            min-width: 20rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: #2b2b2b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            text-decoration: none;
+        }
+
+            .category-item img {
+                width: 10rem;
+                height: auto;
+            }
+
+            .category-item span {
+                font-size: 24px;
+                color: white;
+                text-align: center;
+                font-weight: 600;
+            }
+    }
+
+    @media (orientation: portrait) {
+        .category-item {
+            min-width: calc(100% - 1.5rem);
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: #2b2b2b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            text-decoration: none;
+        }
+
+            .category-item img {
+                width: 33vw;
+                height: auto;
+            }
+
+            .category-item span {
+                font-size: 3vw;
+                color: white;
+                text-align: center;
+                font-weight: 600;
+            }
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #3b3b3b;
+        text-align: right;
+        flex-shrink: 0;
+        padding-top: 0;
+    }
+
+    .footer-logo {
+        background: #3b3b3b;
+        max-height: 2rem;
+        margin-right: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+</style>

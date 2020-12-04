@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    padding: 25%;
+    background: url(https://cdn.discordapp.com/attachments/688493504707428455/742449063643054191/3925_help_3.gif) no-repeat center center;
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+
+.loginbox {
+    width: 320px;
+    height: 370px;
+    background: #000;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+    .logo {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+h1 {
+    margin: 0;
+    padding: 0 0 30px;
+    text-align: center;
+    font-size: 35px;
+}
+
+.loginbox p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.loginbox input {
+    width: 100%;
+    margin-bottom: 20px;
+
+
+}
+
+.loginbox input[type="number"], input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+
+}
+
+.loginbox input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #fb2525;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.loginbox input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}

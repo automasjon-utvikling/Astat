@@ -1,0 +1,265 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Portstyring</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-list">
+            <img class="nav-logo" src="/static/linsight.png" />
+            <a class="nav-dato">24.09.2020</a>
+            <a>&nbsp;</a>
+            <a class="nav-time">09:00</a>
+            <a class="nav-login">{{ g.user.name }}</a>
+        </div>
+    </nav>
+    <section style="text-align:center;">
+        
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn" style="margin-top: 1%; width: 15vw; height: 15vh;font-size:5vh;">Open Camera</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <iframe 
+                src="http://172.25.100.124/mjpg/video.mjpg" width="95%" height="700px">
+                </iframe>
+            </div>
+
+        </div>
+        <form method="POST">
+        <button value="senddata" type="submit" name="submit_button" style="margin-top: 1%; width: 15vw; height: 15vh;font-size:5vh;">Open gate</button>
+        </form>
+    </section>
+    <footer>
+        <img class="footer-logo" src="/static/footer.png" />
+    </footer>
+
+</body>
+</html>
+
+
+<style>
+    html {
+        min-height: 100%;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-flow: column;
+        min-height: 100%;
+        font-family: helvetica;
+        background: #3b3b3b;
+    }
+
+    .nav-list {
+        background: #3b3b3b;
+        border-bottom: solid 5px #5b5b5b;
+        padding: 10px;
+        padding-bottom: 2px;
+        color: #cbcbcb;
+        min-height: 3.2rem;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        flex: 0 1 auto;
+        font-size: 32px;
+    }
+
+        .nav-list .nav-logo {
+            max-height: 3rem;
+            position: absolute;
+            left: 1rem;
+            top: 0.5rem;
+        }
+
+    @media screen and (min-width: 900px) {
+        .nav-list .nav-dato {
+        }
+
+        .nav-list .nav-time {
+            font-weight: 600;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .nav-list .nav-dato {
+            display: none;
+        }
+
+        .nav-list .nav-time {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: 600px) {
+        .nav-list .nav-login {
+            position: absolute;
+            max-width: 50%;
+            right: 3.5rem;
+            font-size: 24px;
+        }
+    }
+
+    @media screen and (max-width: 650px) {
+        .nav-list .nav-login {
+            display: none;
+        }
+    }
+
+    section {
+        flex: 1 0 auto;
+        padding: 1rem;
+        background: #3b3b3b;
+    }
+
+    .category-list {
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+    }
+
+    @media (orientation: landscape) {
+        .category-item {
+            min-width: 20rem;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: #2b2b2b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            text-decoration: none;
+        }
+
+            .category-item img {
+                width: 10rem;
+                height: auto;
+            }
+
+            .category-item span {
+                font-size: 24px;
+                color: white;
+                text-align: center;
+                font-weight: 600;
+            }
+    }
+
+    @media (orientation: portrait) {
+        .category-item {
+            min-width: calc(100% - 1.5rem);
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: #2b2b2b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            text-decoration: none;
+        }
+
+            .category-item img {
+                width: 33vw;
+                height: auto;
+            }
+
+            .category-item span {
+                font-size: 3vw;
+                color: white;
+                text-align: center;
+                font-weight: 600;
+            }
+    }
+
+    footer {
+        position: fixed;
+        bottom: -4px;
+        left: 0;
+        width:100%;
+        background: #3b3b3b;
+        text-align: right;
+        flex-shrink: 0;
+        padding-top: 0;
+    }
+
+    .footer-logo {
+        background: #3b3b3b;
+        max-height: 2rem;
+        margin-right: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 53%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
