@@ -69,5 +69,8 @@
   <ItemGroup>
     <None Include="www\public\index.htm" />
     <None Include="config.config" />
+    <None Include="www\public\templates\navbar.template" />
+    <None Include="www\public\templates\footer.template" />
+    <None Include="www\public\templates\head.template" />
   </ItemGroup>
 </Project>
