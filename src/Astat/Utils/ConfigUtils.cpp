@@ -1,14 +1,13 @@
 #include "atpch.h"
 
 #include "ConfigUtils.h"
-
 #include "Astat/Logging/Logger.h"
 #include "Astat/Utils/FileUtils.h"
 
 Astat::Utils::Config::Config ()
 {
 
-}
+} // Config()
 
 void Astat::Utils::Config::Assign (std::string a_path)
 {
@@ -42,21 +41,21 @@ void Astat::Utils::Config::Assign (std::string a_path)
 	{
 		Astat::Logger::sLog ("Valid config file not found!");
 	}
-}
+} // Assign()
 
 const char *Astat::Utils::Config::GetCSTRValue (std::string a_key)
 {
 	return m_map.at(a_key).c_str();
-}
+} // GetCSTRValue()
 
 int Astat::Utils::Config::GetIValue (std::string a_key)
 {
 	return std::stoi (m_map.at (a_key));
-}
+} // GetIValue()
 
 Astat::Utils::Config &Astat::Utils::Config::GetConfig ()
 {
 	static Config s_instance;
 	return s_instance;
-}
+} // GetConfig()
 

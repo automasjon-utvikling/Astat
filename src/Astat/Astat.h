@@ -14,5 +14,5 @@ namespace Astat
 
 		// File reading
 		FILE_NOT_GOOD,
-	};
-}
+	}; // enum class EError
+} // namespace Astat

@@ -3,7 +3,6 @@
 #include "Astat/Astat.h"
 #include "Astat/Logging/Logger.h"
 #include "Astat/Utils/ConfigUtils.h"
-
 #include "Astat/Networking/HTTP/HttpServer.h"
 
 int main( )
@@ -20,4 +19,4 @@ int main( )
     httpServerThread.join();
     std::cout << "Exiting!" << std::endl;
     return 0;
-}
+} // main()

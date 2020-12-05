@@ -19,7 +19,7 @@ namespace Astat
                 TcpListner(const char* aIpAddress, u_short aPort)
                     : m_IpAddress(aIpAddress), m_Port(aPort), m_SocketId(0), m_Master({ 0 })
                 {
-                }
+                } // TcpListner()
 
                 int init( );
                 int run( );
@@ -42,9 +42,9 @@ namespace Astat
                 u_short m_Port;
                 SOCKET m_SocketId;
                 fd_set m_Master;
-            };
-        }
-    }
-}
+            }; // class TcpListner
+        } // namespace Tcp
+    } // namespace Networking
+} // namespace Astat
 
 

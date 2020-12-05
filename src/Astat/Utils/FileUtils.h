@@ -2,12 +2,6 @@
 
 #include "Astat/Astat.h"
 
-/*
- * File file;
- * file.Assign("docs/component.htm");
- * std::string file_content = file.Read();
- */
-
 namespace Astat
 {
 	namespace Utils
@@ -19,7 +13,7 @@ namespace Astat
 			{
 				TEXT,
 				BINARY,
-			};
+			}; // enum class EFileMode
 
 		public:
 			File ();
@@ -30,6 +24,7 @@ namespace Astat
 		private:
 			std::string m_path = "";
 			EFileMode m_mode = EFileMode::TEXT;
-		};
-	}
-}
+
+		}; // class File
+	} // namespace Utils
+} // namespace Astat
