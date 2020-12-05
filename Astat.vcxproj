@@ -166,7 +166,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Astat\Networking\HTTP\HttpError.cpp" />
     <ClCompile Include="src\Astat\Networking\HTTP\HttpServer.cpp" />
+    <ClCompile Include="src\Astat\Utils\FileUtils.cpp" />
     <ClCompile Include="src\atpch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">atpch.h</PrecompiledHeaderFile>
@@ -182,7 +184,9 @@
     <ClCompile Include="src\Astat\Networking\TCP\TcpListner.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Astat\Networking\HTTP\HttpError.h" />
     <ClInclude Include="src\Astat\Networking\HTTP\HttpServer.h" />
+    <ClInclude Include="src\Astat\Utils\FileUtils.h" />
     <ClInclude Include="src\atpch.h" />
     <ClInclude Include="src\Astat\Astat.h" />
     <ClInclude Include="src\Astat\Logging\Logger.h" />
