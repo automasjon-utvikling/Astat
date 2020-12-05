@@ -194,9 +194,6 @@
     <ClInclude Include="src\config.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="www\messages\404.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
     <None Include="www\public\index.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>

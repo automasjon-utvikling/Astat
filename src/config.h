@@ -1,4 +1,0 @@
-#pragma once
-
-#define AT_CONFIG_SERVER_IP_ADDRESS "192.168.10.197"
-#define AT_CONFIG_SERVER_HTTP_PORT 80

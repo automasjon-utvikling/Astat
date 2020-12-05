@@ -64,7 +64,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="www\messages\404.htm" />
     <None Include="www\public\index.htm" />
   </ItemGroup>
 </Project>
