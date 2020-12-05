@@ -114,8 +114,20 @@ namespace Astat
 						Astat::Logger::Logger::sLog ("Read Error -> 404 Not found");
 						status_code = HttpError::GetNotFound (file_content);
 					}
-
-					//  
+					
+					//
+					// Templating file inclutions
+					//
+					
+					// Todo
+					
+					//
+					// Templating variables
+					//
+					
+					// Todo
+					
+					//
 					// Construct the response
 					//
 					std::ostringstream oss;
@@ -125,7 +137,7 @@ namespace Astat
 					oss << "Content-Length: " << file_content.size () << "\r\n";
 					oss << "\r\n";
 					oss << file_content;
-
+					
 					// 
 					// Send the response
 					//
