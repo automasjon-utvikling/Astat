@@ -1,0 +1,12 @@
+<nav>
+  <div class="nav-list">
+    <img class="nav-logo" src="static/linsight.png" />
+    <a class="nav-dato">13.09.2020</a>
+    <!--IMPLEMENTER DETTE "SERVER DATE"-->
+    <a>&nbsp;</a>
+    <a class="nav-time">23:31</a>
+    <!--IMPLEMENTER DETTE "SERVER CLOCK"-->
+    <a class="nav-login">{{ g.user.name }}</a>
+    <!--IMPLEMENTER DETTE "BRUKERNAVN"-->
+  </div>
+</nav>
