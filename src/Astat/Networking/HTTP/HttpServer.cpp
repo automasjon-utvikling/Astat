@@ -163,7 +163,60 @@ namespace Astat
 						status_code = HttpError::GetNotFound (status_message);
 					}
 
-					//  
+					//
+					// Templating file inclutions
+					//
+					if (current_filetype.type == "text/html")
+					{
+						std::vector<std::string> matches;
+						std::string s = file_content;
+						std::smatch m;
+						std::regex e ("\\{\\{ template\\.\\w+ \\}\\}");
+						while (std::regex_search (s, m, e))
+						{
+							for (auto x : m)
+							{
+								matches.push_back (x);
+							}
+							s = m.suffix ().str ();
+						}
+
+						Utils::File template_file;
+						for (std::string x : matches)
+						{
+							std::string template_name = x.substr (std::string ("{{ template.").length ());
+							template_name.erase (template_name.length () - std::string (" }}").length ());
+							template_name += ".template";
+							template_file.Assign ("./www/public/templates/" + template_name);
+
+							std::string r;
+							if ((long) template_file.Read (r) != NO_ERROR)
+							{
+								Astat::Logger::Logger::sLog ("Template Read Error");
+							}
+							
+							for (size_t pos = 0; ; pos += r.length ())
+							{
+								// Locate the substring to replace
+								pos = file_content.find (x, pos);
+								if (pos == std::string::npos)
+								{
+									break;
+								}
+
+								// Replace by erasing and inserting
+								file_content.erase (pos, x.length ());
+								file_content.insert (pos, r);
+							}
+						}
+					}
+					//
+					// Templating variables
+					//
+
+					// Todo
+
+					//
 					// Construct the response
 					//
 					std::ostringstream oss;
