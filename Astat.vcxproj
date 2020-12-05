@@ -199,6 +199,9 @@
     <None Include="www\public\index.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="www\public\templates\footer.template" />
+    <None Include="www\public\templates\head.template" />
+    <None Include="www\public\templates\navbar.template" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

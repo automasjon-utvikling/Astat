@@ -43,7 +43,7 @@ namespace Astat
 				//
 				if (message.size () >= 6 && message[0] == "CONNECT")
 				{
-				status_code = HttpError::GetNotImplemented (file_content);
+				status_code = HttpError::GetMethodNotAllowed (file_content);
 
 				std::ostringstream oss;
 				oss << "HTTP/1.1 " << status_code << " OK\r\n";
@@ -64,7 +64,7 @@ namespace Astat
 				//
 				else if (message.size () >= 6 && message[0] == "DELETE")
 				{
-				status_code = HttpError::GetNotImplemented (file_content);
+				status_code = HttpError::GetMethodNotAllowed (file_content);
 
 				std::ostringstream oss;
 				oss << "HTTP/1.1 " << status_code << " OK\r\n";
@@ -182,7 +182,7 @@ namespace Astat
 				//
 				else if (message.size () >= 4 && message[0] == "HEAD")
 				{
-					status_code = HttpError::GetNotImplemented (file_content);
+					status_code = HttpError::GetMethodNotAllowed (file_content);
 
 					std::ostringstream oss;
 					oss << "HTTP/1.1 " << status_code << " OK\r\n";
@@ -203,15 +203,11 @@ namespace Astat
 				//
 				else if (message.size () >= 7 && message[0] == "OPTIONS")
 				{
-					status_code = HttpError::GetNotImplemented (file_content);
-
 					std::ostringstream oss;
-					oss << "HTTP/1.1 " << status_code << " OK\r\n";
+					oss << "HTTP/1.1 204 No Content\r\n";
+					oss << "Allow: GET, OPTIONS\r\n";
 					oss << "Cache-Control: no-cache, private\r\n";
-					oss << "Content-Type: " << "text/html" << "\r\n";
-					oss << "Content-Length: " << file_content.size () << "\r\n";
 					oss << "\r\n";
-					oss << file_content;
 
 					std::string output = oss.str ();
 					size_t size = output.size () + 1;
@@ -224,7 +220,7 @@ namespace Astat
 				//
 				else if (message.size () >= 5 && message[0] == "PATCH")
 				{
-					status_code = HttpError::GetNotImplemented (file_content);
+					status_code = HttpError::GetMethodNotAllowed (file_content);
 
 					std::ostringstream oss;
 					oss << "HTTP/1.1 " << status_code << " OK\r\n";
@@ -245,7 +241,7 @@ namespace Astat
 				//
 				else if (message.size () >= 4 && message[0] == "POST")
 				{
-					status_code = HttpError::GetNotImplemented (file_content);
+					status_code = HttpError::GetMethodNotAllowed (file_content);
 
 					std::ostringstream oss;
 					oss << "HTTP/1.1 " << status_code << " OK\r\n";
@@ -266,7 +262,7 @@ namespace Astat
 				//
 				else if (message.size () >= 3 && message[0] == "PUT")
 				{
-				status_code = HttpError::GetNotImplemented (file_content);
+				status_code = HttpError::GetMethodNotAllowed (file_content);
 
 				std::ostringstream oss;
 				oss << "HTTP/1.1 " << status_code << " OK\r\n";
@@ -287,7 +283,7 @@ namespace Astat
 				//
 				else if (message.size () >= 5 && message[0] == "TRACE")
 				{
-				status_code = HttpError::GetNotImplemented (file_content);
+				status_code = HttpError::GetMethodNotAllowed (file_content);
 
 				std::ostringstream oss;
 				oss << "HTTP/1.1 " << status_code << " OK\r\n";
