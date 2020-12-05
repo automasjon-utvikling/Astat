@@ -1,20 +1,19 @@
 #include "atpch.h"
 
 #include "FileUtils.h"
-
 #include "Astat/Logging/Logger.h"
 
 Astat::Utils::File::File ()
 {
 
-}
+} // File()
 
 Astat::EError Astat::Utils::File::Assign (const std::string& a_path, const EFileMode a_mode)
 {
 	m_path = a_path;
 	m_mode = a_mode;
 	return EError::NO_ERROR;
-}
+} // Assign()
 
 Astat::EError Astat::Utils::File::Read (std::string& o_content)
 {
@@ -42,4 +41,4 @@ Astat::EError Astat::Utils::File::Read (std::string& o_content)
 
 	stream.close ();
 	return EError::NO_ERROR;
-}
+} // Read()

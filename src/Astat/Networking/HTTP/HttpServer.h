@@ -1,4 +1,5 @@
 #pragma once
+
 #include "atpch.h"
 #include "Astat/Astat.h"
 
@@ -6,36 +7,37 @@
 
 namespace Astat
 {
-    namespace Networking
-    {
-        namespace Http
-        {
-            class HttpServer : public Astat::Networking::Tcp::TcpListner
-            {
-            public:
-                HttpServer(const char* aIpAddress, u_short aPort)
-                    :TcpListner(aIpAddress, aPort)
-                {
-                }
+	namespace Networking
+	{
+		namespace Http
+		{
+			class HttpServer : public Astat::Networking::Tcp::TcpListner
+			{
+			public:
+				HttpServer (const char *aIpAddress, u_short aPort)
+					:TcpListner (aIpAddress, aPort)
+				{
+				} // HttpServer()
 
-            protected:
-                virtual void onClientConnect(SOCKET aClientSocketId);
-                virtual void onClientDisconnect(SOCKET aClientSocketId);
-                virtual void onClientMessage(SOCKET aClientSocketId, const char* aMessage);
-            };
+			protected:
+				virtual void onClientConnect (SOCKET aClientSocketId);
+				virtual void onClientDisconnect (SOCKET aClientSocketId);
+				virtual void onClientMessage (SOCKET aClientSocketId, const char *aMessage);
+			}; // class HttpServer
 
-            struct HttpFileType {
-                std::string suffix;
-                std::string type;
-                std::string group;
+			struct HttpFileType
+			{
+				std::string suffix;
+				std::string type;
+				std::string group;
 
-                HttpFileType(std::string a_suffix, std::string a_type, std::string a_group)
-                    :suffix(a_suffix), type(a_type), group(a_group)
-                {
+				HttpFileType (std::string a_suffix, std::string a_type, std::string a_group)
+					:suffix (a_suffix), type (a_type), group (a_group)
+				{
 
-                }
-            };
-        }
-    }
-}
+				} // HttpFileType()
+			}; // struct HttpFileType
+		} // namespace Http
+	} // namespace Networking
+} // namespace Astat
 

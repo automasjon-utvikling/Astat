@@ -11,6 +11,9 @@ namespace Astat
 			class HttpError
 			{
 			public:
+				//
+				// 4xx
+				//
 				static int GetBadRequest (std::string& o_message);
 				static int GetUnauthorized (std::string& o_message);
 				static int GetPaymentRequired (std::string &o_message);
@@ -41,6 +44,9 @@ namespace Astat
 				static int GetRequestHeaderFieldsTooLarge (std::string &o_message);
 				static int GetUnavailableForLegalReasons (std::string &o_message);
 
+				//
+				// 5xx
+				//
 				static int GetInternalServerError (std::string &o_message);
 				static int GetNotImplemented (std::string &o_message);
 				static int GetBadGateway (std::string &o_message);
@@ -52,7 +58,7 @@ namespace Astat
 				static int GetLoopDetected (std::string &o_message);
 				static int GetNotExtended (std::string &o_message);
 				static int GetNetworkAuthenticationRequired (std::string &o_message);
-			};
-		}
-	}
-}
+			}; // class HttpError
+		} // namespace Http
+	} // namespace Networking
+} // namespace Astat
