@@ -18,7 +18,6 @@ Astat::EError Astat::Utils::File::Assign (const std::string& a_path, const EFile
 
 Astat::EError Astat::Utils::File::Read (std::string& o_content)
 {
-	Astat::Logger::Logger::sLog (m_path);
 	std::ifstream stream;
 
 	switch (m_mode)
