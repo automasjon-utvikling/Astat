@@ -86,18 +86,15 @@ namespace Astat
 					Utils::File file;
 					if (current_filetype.group == "binary")
 					{
-						Astat::Logger::Logger::sLog ("Read Binary");
 						file.Assign("./www/public" + message[1], Utils::File::EFileMode::BINARY);
 					}
 					else
 					{
-						Astat::Logger::Logger::sLog ("Read Text");
 						file.Assign("./www/public" + message[1]);
 					}
 
 					if ((long) file.Read (file_content) == NO_ERROR)
 					{
-						Astat::Logger::Logger::sLog ("Read OK");
 					}
 					else
 					{
