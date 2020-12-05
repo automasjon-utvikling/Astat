@@ -37,10 +37,53 @@ namespace Astat
 				}
 				Astat::Logger::Logger::sLog (log_message);
 
+
+				//
+				// Handling of the CONNECT-method
+				//
+				if (message.size () >= 6 && message[0] == "CONNECT")
+				{
+				status_code = HttpError::GetNotImplemented (file_content);
+
+				std::ostringstream oss;
+				oss << "HTTP/1.1 " << status_code << " OK\r\n";
+				oss << "Cache-Control: no-cache, private\r\n";
+				oss << "Content-Type: " << "text/html" << "\r\n";
+				oss << "Content-Length: " << file_content.size () << "\r\n";
+				oss << "\r\n";
+				oss << file_content;
+
+				std::string output = oss.str ();
+				size_t size = output.size () + 1;
+
+				execSendTo (aClientSocketId, output.c_str (), size);
+				}
+
+				//
+				// Handling of the DELETE-method
+				//
+				else if (message.size () >= 6 && message[0] == "DELETE")
+				{
+				status_code = HttpError::GetNotImplemented (file_content);
+
+				std::ostringstream oss;
+				oss << "HTTP/1.1 " << status_code << " OK\r\n";
+				oss << "Cache-Control: no-cache, private\r\n";
+				oss << "Content-Type: " << "text/html" << "\r\n";
+				oss << "Content-Length: " << file_content.size () << "\r\n";
+				oss << "\r\n";
+				oss << file_content;
+
+				std::string output = oss.str ();
+				size_t size = output.size () + 1;
+
+				execSendTo (aClientSocketId, output.c_str (), size);
+				}
+
 				//
 				// Handling of the GET-method
 				//
-				if (message.size () >= 3 && message[0] == "GET")
+				else if (message.size () >= 3 && message[0] == "GET")
 				{
 					//
 					// Redirects
@@ -135,6 +178,69 @@ namespace Astat
 				}
 
 				//
+				// Handling of the HEAD-method
+				//
+				else if (message.size () >= 4 && message[0] == "HEAD")
+				{
+					status_code = HttpError::GetNotImplemented (file_content);
+
+					std::ostringstream oss;
+					oss << "HTTP/1.1 " << status_code << " OK\r\n";
+					oss << "Cache-Control: no-cache, private\r\n";
+					oss << "Content-Type: " << "text/html" << "\r\n";
+					oss << "Content-Length: " << file_content.size () << "\r\n";
+					oss << "\r\n";
+					oss << file_content;
+
+					std::string output = oss.str ();
+					size_t size = output.size () + 1;
+
+					execSendTo (aClientSocketId, output.c_str (), size);
+				}
+
+				//
+				// Handling of the OPTIONS-method
+				//
+				else if (message.size () >= 7 && message[0] == "OPTIONS")
+				{
+					status_code = HttpError::GetNotImplemented (file_content);
+
+					std::ostringstream oss;
+					oss << "HTTP/1.1 " << status_code << " OK\r\n";
+					oss << "Cache-Control: no-cache, private\r\n";
+					oss << "Content-Type: " << "text/html" << "\r\n";
+					oss << "Content-Length: " << file_content.size () << "\r\n";
+					oss << "\r\n";
+					oss << file_content;
+
+					std::string output = oss.str ();
+					size_t size = output.size () + 1;
+
+					execSendTo (aClientSocketId, output.c_str (), size);
+				}
+
+				//
+				// Handling of the PATCH-method
+				//
+				else if (message.size () >= 5 && message[0] == "PATCH")
+				{
+					status_code = HttpError::GetNotImplemented (file_content);
+
+					std::ostringstream oss;
+					oss << "HTTP/1.1 " << status_code << " OK\r\n";
+					oss << "Cache-Control: no-cache, private\r\n";
+					oss << "Content-Type: " << "text/html" << "\r\n";
+					oss << "Content-Length: " << file_content.size () << "\r\n";
+					oss << "\r\n";
+					oss << file_content;
+
+					std::string output = oss.str ();
+					size_t size = output.size () + 1;
+
+					execSendTo (aClientSocketId, output.c_str (), size);
+				}
+
+				//
 				// Handling of the POST-method
 				//
 				else if (message.size () >= 4 && message[0] == "POST")
@@ -153,6 +259,48 @@ namespace Astat
 					size_t size = output.size () + 1;
 
 					execSendTo (aClientSocketId, output.c_str (), size);
+				}
+
+				//
+				// Handling of the PUT-method
+				//
+				else if (message.size () >= 3 && message[0] == "PUT")
+				{
+				status_code = HttpError::GetNotImplemented (file_content);
+
+				std::ostringstream oss;
+				oss << "HTTP/1.1 " << status_code << " OK\r\n";
+				oss << "Cache-Control: no-cache, private\r\n";
+				oss << "Content-Type: " << "text/html" << "\r\n";
+				oss << "Content-Length: " << file_content.size () << "\r\n";
+				oss << "\r\n";
+				oss << file_content;
+
+				std::string output = oss.str ();
+				size_t size = output.size () + 1;
+
+				execSendTo (aClientSocketId, output.c_str (), size);
+				}
+
+				//
+				// Handling of the TRACE-method
+				//
+				else if (message.size () >= 5 && message[0] == "TRACE")
+				{
+				status_code = HttpError::GetNotImplemented (file_content);
+
+				std::ostringstream oss;
+				oss << "HTTP/1.1 " << status_code << " OK\r\n";
+				oss << "Cache-Control: no-cache, private\r\n";
+				oss << "Content-Type: " << "text/html" << "\r\n";
+				oss << "Content-Length: " << file_content.size () << "\r\n";
+				oss << "\r\n";
+				oss << file_content;
+
+				std::string output = oss.str ();
+				size_t size = output.size () + 1;
+
+				execSendTo (aClientSocketId, output.c_str (), size);
 				}
 			} // onClientMessage()
 		} // namespace Http
