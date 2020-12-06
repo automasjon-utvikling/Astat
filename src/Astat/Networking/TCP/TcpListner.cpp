@@ -107,6 +107,21 @@ namespace Astat
                 {
                     throw std::overflow_error("TcpListner::execSendTo's aLength is larger than INT_MAX, can't perform static cast from size_t to int!");
                 }
+                std::stringstream ss;
+                for (size_t i = 0; i < aLength; ++i)
+                {
+                    ss << std::setw (2) << std::setfill ('0') << std::hex << (int) aMessage[i] << " ";
+                }
+                std::string s = ss.str ();
+                size_t pos = std::string::npos;
+                // Search for the substring in string in a loop untill nothing is found
+                while ((pos = s.find ("ffff")) != std::string::npos)
+                {
+                    // If found then erase it from string
+                    s.erase (pos, 6);
+                }
+                std::cout << "\033[;35m" << s << "\033[0m" << std::endl;
+
                 send(aClientSocketID, aMessage, static_cast<int>(aLength), 0);
             } // execSendTo()
             
@@ -131,6 +146,20 @@ namespace Astat
             
             void TcpListner::clientHandle(SOCKET aSocket, char aBuffer[4096])
             {
+                std::stringstream ss;
+                for (size_t i = 0; i < 1024; ++i)
+                {
+                    ss << std::setw(2) << std::setfill('0') << std::hex << (int)aBuffer[i] << " ";
+                }
+                std::string s = ss.str ();
+                size_t pos = std::string::npos;
+                // Search for the substring in string in a loop untill nothing is found
+                while ((pos = s.find ("ffff")) != std::string::npos)
+                {
+                    // If found then erase it from string
+                    s.erase (pos, 6);
+                }
+                std::cout << "\033[;33m" << s << "\033[0m" << std::endl;
                 onClientMessage(aSocket, aBuffer);
             } // clientHandle()
             

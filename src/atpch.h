@@ -9,7 +9,9 @@
 #include <sstream>
 #include <fstream>
 #include <istream>
+#include <iomanip>
 
 #include <thread>
 
 #include <regex>
+#include <cstdint>

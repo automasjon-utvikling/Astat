@@ -26,18 +26,11 @@ namespace Astat
 			{
 				std::istringstream iss (aMessage);
 				std::vector<std::string> message ((std::istream_iterator<std::string> (iss)), std::istream_iterator<std::string> ());
+				std::string cmessage = aMessage;
 
 				int status_code = 200;
 				std::string file_content;
-
-				std::string log_message = "Message: \n";
-				for (std::string str : message)
-				{
-					log_message.append ("\t").append (str).append ("\n");
-				}
-				Astat::Logger::Logger::sLog (log_message);
-
-
+				
 				//
 				// Handling of the CONNECT-method
 				//
@@ -194,7 +187,7 @@ namespace Astat
 							{
 								Astat::Logger::Logger::sLog ("Template Read Error");
 							}
-							
+
 							for (size_t pos = 0; ; pos += r.length ())
 							{
 								// Locate the substring to replace
@@ -373,6 +366,14 @@ namespace Astat
 					size_t size = output.size () + 1;
 
 					execSendTo (aClientSocketId, output.c_str (), size);
+				}
+
+				//
+				// HTTPS
+				//
+				else if (cmessage.size () >= 1 && cmessage[0] == 0x16)
+				{
+					
 				}
 			} // onClientMessage()
 		} // namespace Http

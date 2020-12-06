@@ -168,6 +168,7 @@
   <ItemGroup>
     <ClCompile Include="src\Astat\Networking\HTTP\HttpError.cpp" />
     <ClCompile Include="src\Astat\Networking\HTTP\HttpServer.cpp" />
+    <ClCompile Include="src\Astat\Networking\TLS\Tls10.cpp" />
     <ClCompile Include="src\Astat\Utils\ConfigUtils.cpp" />
     <ClCompile Include="src\Astat\Utils\FileUtils.cpp" />
     <ClCompile Include="src\atpch.cpp">
@@ -188,6 +189,7 @@
     <ClInclude Include="src\Astat\Astat.h" />
     <ClInclude Include="src\Astat\Networking\HTTP\HttpError.h" />
     <ClInclude Include="src\Astat\Networking\HTTP\HttpServer.h" />
+    <ClInclude Include="src\Astat\Networking\TLS\Tls10.h" />
     <ClInclude Include="src\Astat\Utils\ConfigUtils.h" />
     <ClInclude Include="src\Astat\Utils\FileUtils.h" />
     <ClInclude Include="src\atpch.h" />

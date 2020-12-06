@@ -39,6 +39,9 @@
     <ClCompile Include="src\Astat\Utils\ConfigUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Astat\Networking\TLS\Tls10.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Astat\Logging\Logger.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Astat\Utils\ConfigUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Astat\Networking\TLS\Tls10.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
