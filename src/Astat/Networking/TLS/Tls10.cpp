@@ -87,8 +87,8 @@ namespace Astat
 			/// error or not; if an alert with a level of warning is received, the
 			/// receiving party may decide at its discretion whether to treat this as
 			/// a fatal error or not.
-			struct Alert certificate_unkown_fatal = { AlertLevel::fatal, AlertDescription::certificate_unknown };
-			struct Alert certificate_unkown_warning = { AlertLevel::warning, AlertDescription::certificate_unknown };
+			struct Alert certificate_unknown_fatal = { AlertLevel::fatal, AlertDescription::certificate_unknown };
+			struct Alert certificate_unknown_warning = { AlertLevel::warning, AlertDescription::certificate_unknown };
 
 			/// @brief https://tools.ietf.org/html/rfc2246#section-7.2.2
 			/// A field in the handshake was out of range or inconsistent with

@@ -9,20 +9,97 @@ namespace Astat
 		/// @brief https://tools.ietf.org/html/rfc2246
 		namespace Tls10
 		{
-			/// @brief https://tools.ietf.org/html/rfc2246#section-6.2.1
-			namespace ProtocolVersion
+			/// @brief https://tools.ietf.org/html/rfc2246#section-6.1
+			namespace ConnectionEnd
 			{
-				struct ProtocolVersion
+				enum ConnectionEnd
 				{
-					uint8_t major;
-					uint8_t minor;
+					server,
+					client
 				};
 			}
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-6.1
+			namespace BulkCipherAlgorithm
+			{
+				enum BulkCipherAlgorithm
+				{
+					null,
+					rc4,
+					rc2,
+					des,
+					des3,
+					des40
+				};
+			}
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-6.1
+			namespace CipherType
+			{
+				enum CipherType
+				{
+					stream,
+					block
+				};
+			}
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-6.1
+			namespace IsExportable
+			{
+				enum IsExportable
+				{
+					true_,
+					client_
+				};
+			}
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-6.1
+			namespace MACAlgorithm
+			{
+				enum MACAlgorithm
+				{
+					null,
+					md5,
+					sha
+				};
+			}
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-6.1
+			namespace CompressionMethod
+			{
+				enum CompressionMethod : uint8_t
+				{
+					null = 0
+				};
+			}
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-6.1
+			struct SecurityParameters
+			{
+				ConnectionEnd::ConnectionEnd entity;
+				BulkCipherAlgorithm::BulkCipherAlgorithm bulk_cipher_algorithm;
+				CipherType::CipherType cipher_type;
+				uint8_t key_size;
+				uint8_t key_material_length;
+				IsExportable::IsExportable is_exportable;
+				MACAlgorithm::MACAlgorithm mac_algorithm;
+				uint8_t hash_size;
+				CompressionMethod::CompressionMethod compression_algorithm;
+				uint8_t master_secret[48];
+				uint8_t client_random[32];
+				uint8_t server_random[32];
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-6.2.1
+			struct ProtocolVersion
+			{
+				uint8_t major;
+				uint8_t minor;
+			};
 
 			/// @brief https://tools.ietf.org/html/rfc2246#section-6.2.1
 			namespace ContentType
 			{
-
 				enum ContentType : uint8_t
 				{
 					change_cipher_spec = 0x14,
@@ -39,7 +116,7 @@ namespace Astat
 				ContentType::ContentType type;
 
 				/// @brief The version of the protocol being employed.
-				ProtocolVersion::ProtocolVersion version;
+				ProtocolVersion version;
 
 				/// @brief The length (in bytes) of the following TLSPlaintext.fragment.
 				/// The length should not exceed 2 ^ 14
@@ -58,7 +135,7 @@ namespace Astat
 				ContentType::ContentType type;
 
 				/// @brief The version of the protocol being employed.
-				ProtocolVersion::ProtocolVersion version;
+				ProtocolVersion version;
 
 				/// @brief The length (in bytes) of the following TLSCompressed.fragment.
 				/// The length should not exceed 2 ^ 14 + 1024.
@@ -76,12 +153,13 @@ namespace Astat
 				ContentType::ContentType type;
 
 				/// @brief The version of the protocol being employed.
-				ProtocolVersion::ProtocolVersion version;
+				ProtocolVersion version;
 
 				/// @brief The length (in bytes) of the following TLSCiphertext.fragment.
 				/// The length may not exceed 2 ^ 14 + 2048.
 				uint16_t length;
 
+				// Todo
 				/// @brief The encrypted form of TLSCompressed.fragment, with the MAC.
 				/// Size of the vector MUST equal "length"
 				// select (CipherSpec.cipher_type) {
@@ -91,8 +169,10 @@ namespace Astat
 			};
 
 			/// @brief https://tools.ietf.org/html/rfc2246#section-6.2.3.1
+			// Todo
 
 			/// @brief https://tools.ietf.org/html/rfc2246#section-6.2.3.2
+			// Todo
 
 			/// @brief https://tools.ietf.org/html/rfc2246#section-7.1
 			struct ChangeCipherSpec
@@ -149,6 +229,98 @@ namespace Astat
 			{
 				AlertLevel::AlertLevel level;
 				AlertDescription::AlertDescription description;
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4
+			namespace HandshakeType
+			{
+				enum HandshakeType : uint8_t
+				{
+					hello_request = 0x00,
+					client_hello = 0x01,
+					server_hello = 0x02,
+					certificate = 0x0b,
+					server_key_exchange = 0x0c,
+					certificate_request = 0x0d,
+					server_hello_done = 0x0e,
+					certificate_verify = 0x0f,
+					client_key_exchange = 0x10,
+					finished = 0x14
+				};
+			}
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4
+			struct HandshakeBody
+			{
+
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4
+			struct Handshake
+			{
+				HandshakeType::HandshakeType msg_type;
+				uint24_t length;
+				struct HandshakeBody body;
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4.1.1
+			struct HelloRequest : HandshakeBody
+			{
+				// Todo
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4.1.2
+			struct ClientHello : HandshakeBody
+			{
+				// Todo
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4.1.3
+			struct ServerHello : HandshakeBody
+			{
+				// Todo
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4.2
+			struct Certificate : HandshakeBody
+			{
+				// Todo
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4.3
+			struct ServerKeyExchange : HandshakeBody
+			{
+				// Todo
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4.4
+			struct CertificateRequest : HandshakeBody
+			{
+				// Todo
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4.5
+			struct ServerHelloDone : HandshakeBody
+			{
+				// Todo
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4.8
+			struct CertificateVerify : HandshakeBody
+			{
+				// Todo
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4.7
+			struct ClientKeyExchange : HandshakeBody
+			{
+				// Todo
+			};
+
+			/// @brief https://tools.ietf.org/html/rfc2246#section-7.4.9
+			struct Finished : HandshakeBody
+			{
+				// Todo
 			};
 		}
 	}
