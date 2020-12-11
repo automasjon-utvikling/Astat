@@ -42,6 +42,9 @@
     <ClCompile Include="src\Astat\Networking\TLS\Tls10.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Astat\Networking\Layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Astat\Logging\Logger.h">

@@ -24,9 +24,107 @@ namespace Astat
 
 			void HttpServer::onClientMessage (SOCKET aClientSocketId, const char *aMessage)
 			{
+				//std::string cmessage = aMessage;
+				//std::vector<char> cmessage(4096);
+				//strncpy_s (&cmessage[0], aMessage, (size_t)4096);
+				const char *cmessage = aMessage;
+				//
+				// TLS layer
+				//
+				if (cmessage[0] == 0x16)
+				{
+					std::cout << "TLS detected" << std::endl;
+					if (cmessage[1] == 0x03 && cmessage[2] == 0x01)
+					{
+						std::cout << "v0301 (1.0)" << std::endl;
+						uint16_t message_length = cmessage[3] << 8 | cmessage[4];
+						if (cmessage[5] == 0x01) // ClientHello
+						{
+							std::cout << "ClientHello" << std::endl;
+							uint32_t hello_length = cmessage[6] << 16 | cmessage[7] << 8 | cmessage[8];
+							std::cout << "length: " << hello_length << std::endl;
+							if (!(cmessage[9] == 0x03 && cmessage[10] == 0x03))
+							{
+								std::cout << "insufficient security alert" << std::endl;
+								// Send insufficient security alert
+								return;
+							}
+							std::vector<uint8_t> random;
+							for (int i = 0; i < 32; i++)
+							{
+								random.push_back (cmessage[11 + i]);
+							} // Next is 43
+
+							std::stringstream ssrandom;
+							for (size_t i = 0; i < 32; ++i)
+							{
+								ssrandom << std::setw (2) << std::setfill ('0') << std::hex << (int) random[i] << " ";
+							}
+							std::string srandom = ssrandom.str ();
+							size_t posrandom = std::string::npos;
+							// Search for the substring in string in a loop untill nothing is found
+							while ((posrandom = srandom.find ("ffff")) != std::string::npos)
+							{
+								// If found then erase it from string
+								srandom.erase (posrandom, 6);
+							}
+
+							std::cout << "random: " << srandom << std::endl;
+
+							uint8_t legacy_session_id_length = cmessage[43];
+							std::vector<uint8_t> legacy_session_id;
+							for (int i = 0; i < legacy_session_id_length; i++) // Is it 32?
+							{
+								random.push_back (cmessage[44 + i]);
+							} // Next is unknown
+							
+							uint16_t index = 44 + legacy_session_id_length;
+							uint16_t cipher_suit_length = cmessage[index] << 8 | cmessage[index +1];
+							index += 2;
+							std::vector<uint16_t> cipher_suits;
+							for (int i = 0; i < cipher_suit_length; i++)
+							{
+								cipher_suits.push_back (cmessage[index] << 8 | cmessage[index + 1]);
+								index += 2;
+							}
+							uint8_t compression_methods_length = cmessage[index++];
+							std::vector<uint8_t> compression_methods;
+							for (int i = 0; i < compression_methods_length; i++)
+							{
+								compression_methods.push_back (cmessage[index++]);
+							}
+
+							uint16_t extensions_length = cmessage[index] << 8 | cmessage[index + 1];
+							index += 2;
+							std::vector<uint16_t> extensions;
+							for (int i = 0; i < extensions_length; i++)
+							{
+								extensions.push_back (cmessage[index] << 8 | cmessage[index + 1]);
+								index += 2;
+							}
+
+							// todo: get extension data from extensions
+
+							std::stringstream ss;
+							for (size_t i = 0; i < extensions_length; ++i)
+							{
+								ss << std::setw (2) << std::setfill ('0') << std::hex << (int) extensions[i] << " ";
+							}
+							std::string s = ss.str ();
+							size_t pos = std::string::npos;
+							// Search for the substring in string in a loop untill nothing is found
+							while ((pos = s.find ("ffff")) != std::string::npos)
+							{
+								// If found then erase it from string
+								s.erase (pos, 6);
+							}
+							std::cout << "\033[;31m" << s << "\033[0m" << std::endl;
+						}
+					}
+				}
+
 				std::istringstream iss (aMessage);
 				std::vector<std::string> message ((std::istream_iterator<std::string> (iss)), std::istream_iterator<std::string> ());
-				std::string cmessage = aMessage;
 
 				int status_code = 200;
 				std::string file_content;
@@ -366,14 +464,6 @@ namespace Astat
 					size_t size = output.size () + 1;
 
 					execSendTo (aClientSocketId, output.c_str (), size);
-				}
-
-				//
-				// HTTPS
-				//
-				else if (cmessage.size () >= 1 && cmessage[0] == 0x16)
-				{
-					
 				}
 			} // onClientMessage()
 		} // namespace Http
